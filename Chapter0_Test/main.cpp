@@ -36,9 +36,17 @@ int main(int argc, char *argv[])
         GProp_GProps volumeProperties;
 	BRepGProp::VolumeProperties(boxWithHole,volumeProperties);
 
-	std::cout << std::setprecision(14) << "Mass of the model is: " << volumeProperties.Mass() << std::endl;
+	std::cout << std::setprecision(14) << "Volume of the model is: " << volumeProperties.Mass() << std::endl;
 	std::cout << "Center of mass is: " << volumeProperties.CentreOfMass().X() << " " << volumeProperties.CentreOfMass().Y() << " " << volumeProperties.CentreOfMass().Z() << std::endl;
-	
+
+	gp_Mat inertiaMatrix = volumeProperties.MatrixOfInertia();
+	std::cout << "Matrix of inertia: " << std::endl;
+	for (int i = 1; i <= 3; ++i) {
+		for (int j = 1; j <= 3; ++j) {
+			std::cout << inertiaMatrix(i,j) << "\t";
+		}
+		std::cout << std::endl;
+	}
 
 	return 0;
 }
