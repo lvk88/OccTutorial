@@ -4,3 +4,6 @@ PROJECT(Chapter0)
 
 ADD_EXECUTABLE(chapter1_1 chapter1_1.cpp)
 TARGET_LINK_LIBRARIES(chapter1_1 TKernel TKMath)
+
+ADD_EXECUTABLE(chapter1_2 chapter1_2.cpp)
+TARGET_LINK_LIBRARIES(chapter1_2 TKernel TKMath)

@@ -1,3 +1,6 @@
+//OpenCASCADE tutorials by Laszlo Kudela
+//2015 November
+//Chapter 1.1 Basics
 #include "gp_Pnt.hxx"
 #include "gp_Ax1.hxx"
 #include "gp_Trsf.hxx"
