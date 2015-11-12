@@ -2,6 +2,8 @@
 #include "gp_Ax1.hxx"
 #include "gp_Trsf.hxx"
 
+#include<iostream>
+
 int main(int argc, char *argv[])
 {
 
@@ -24,7 +26,7 @@ int main(int argc, char *argv[])
 	//Create a new point by mirroring pnt1 about the y axis
 	gp_Ax1 axisOfSymmetry(gp_Pnt(0.0,0.0,0.0),gp_Dir(0.0,1.0,0.0));
 	gp_Pnt pnt3 = pnt1.Mirrored(axisOfSymmetry);
-	std::cout << "pnt3 after rotation: " << pnt3.X() << " " << pnt3.Y() << " " << pnt3.Z()  << std::endl;
+	std::cout << "pnt3 after mirroring: " << pnt3.X() << " " << pnt3.Y() << " " << pnt3.Z()  << std::endl;
 	
 	return 0;
 }
