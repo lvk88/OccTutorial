@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import matplotlib
+import sys
 
 x,y = [],[]
-file = open('chapter1_2_circlePoints.txt','r')
+fileName = sys.argv[1]
+file = open(fileName,'r')
 for line in file:
     row = line.split()
     x.append(row[0])

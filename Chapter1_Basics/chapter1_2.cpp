@@ -1,6 +1,6 @@
 //OpenCASCADE tutorials by Laszlo Kudela
 //2015 November
-//Chapter 1.1 Basics
+//Chapter 1.2 Basics
 
 #include <iostream>
 #include <fstream>
@@ -54,6 +54,19 @@ int main(int argc, char *argv[])
 		gp_Pnt pointOnCircle = ElCLib::Value(i*deltaU,circle);	
 		file << pointOnCircle.X() << " " << pointOnCircle.Y() << " " << pointOnCircle.Z() << " " << std::endl; 
 	}
+	file.close();
+
+	file.open("chapter1_2_circleTangents.txt");
+	//We can evaluate the tangent vector by using the D1 function from ElClib
+	for(Standard_Integer i=0;i<numberOfSamplePoints;i++)
+	{
+		gp_Pnt pointOnCircle;
+		gp_Vec tangentVector;
+		ElCLib::D1(i*deltaU,circle2,pointOnCircle,tangentVector);
+		file << pointOnCircle.X() << " " << pointOnCircle.Y() << " " << pointOnCircle.Z() << " " << tangentVector.X() << " " << tangentVector.Y() 
+			<< " " << tangentVector.Z() << std::endl;
+	}
+	file.close();
 			
 	return 0;
 }
