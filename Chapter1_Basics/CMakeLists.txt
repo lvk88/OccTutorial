@@ -7,3 +7,9 @@ TARGET_LINK_LIBRARIES(chapter1_1 TKernel TKMath)
 
 ADD_EXECUTABLE(chapter1_2 chapter1_2.cpp)
 TARGET_LINK_LIBRARIES(chapter1_2 TKernel TKMath)
+
+ADD_CUSTOM_COMMAND(TARGET chapter1_2
+		   POST_BUILD
+		   COMMAND ${CMAKE_COMMAND} -E copy_directory
+		   "${CMAKE_CURRENT_SOURCE_DIR}/python"
+		   "${CMAKE_CURRENT_BINARY_DIR}")
