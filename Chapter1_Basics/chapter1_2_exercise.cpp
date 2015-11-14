@@ -4,7 +4,7 @@
 #include "gp_Elips.hxx"
 #include "ElCLib.hxx"
 
-const double PI = 3.1415926535897; 
+#include "Utilities/inc/constants.hpp"
 
 int main(int argc, char *argv[])
 {
