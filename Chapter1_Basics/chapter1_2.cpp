@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 	//We now evaluate 15 points on the circle and write the resulting coordinates into a file
   	
 	//Divide the interval into 100 points
- 	Standard_Integer numberOfSamplePoints = 15;
+ 	Standard_Integer numberOfSamplePoints = 20;
 	double deltaU = 2*PI/(numberOfSamplePoints - 1);
 
 	std::ofstream file;
@@ -67,6 +67,10 @@ int main(int argc, char *argv[])
 			<< " " << tangentVector.Z() << std::endl;
 	}
 	file.close();
+
+	//Exercise: create an ellipse from the gp package, evaluate 25 points on its circumference together
+	//with the local NORMAL vectors that are pointing outwards. Note: to get the normal vector, simply rotate 
+	//the tangent by 90 degrees clockwise
 			
 	return 0;
 }
