@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-PROJECT(Chapter0)
+PROJECT(Chapter1)
 
 ADD_EXECUTABLE(chapter1_1 chapter1_1.cpp)
 TARGET_LINK_LIBRARIES(chapter1_1 TKernel TKMath)
@@ -10,6 +10,15 @@ TARGET_LINK_LIBRARIES(chapter1_2 TKernel TKMath)
 
 ADD_EXECUTABLE(chapter1_2_exercise chapter1_2_exercise.cpp)
 TARGET_LINK_LIBRARIES(chapter1_2_exercise TKernel TKMath)
+
+FILE(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/inc/*.hpp")
+FILE(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
+ADD_LIBRARY(chapter1 ${SOURCES} ${HEADERS})
+TARGET_LINK_LIBRARIES(chapter1 TKernel TKMath)
+
+ADD_EXECUTABLE(chapter1_3 chapter1_3.cpp)
+TARGET_LINK_LIBRARIES(chapter1_3 chapter1 TKernel TKMath)
 
 ADD_CUSTOM_COMMAND(TARGET chapter1_2
 		   POST_BUILD
