@@ -7,6 +7,8 @@
 #include "Chapter1_Basics/inc/AreaCalculations.hpp"
 #include "Utilities/inc/constants.hpp"
 
+#include <iostream>
+
 int main(int argc, char *argv[])
 {
 	//Create a circle like before
@@ -18,11 +20,20 @@ int main(int argc, char *argv[])
 	//Creating the circle
 	gp_Circ circle(axis,2.5);
 
-	Standard_Integer resolution = 500;
+	Standard_Integer resolution = 20;
+
+	//Here, an array of gp_Pnt is allocated, with 500 elements
+	//Note that the indexing runs from 1 to 500, instead of the
+	//standard convention of 0-499
 	TColgp_Array1OfPnt pointsOnCircle(1,resolution);
-	PointOnCurveDistribution::DistributePointsOnCurve(circle,pointsOnCircle,0.0,2.0*PI,resolution);
+
+	//Distribute the points and write them out to a file
+	PointOnCurveDistribution::distributePointsOnCurve(circle,pointsOnCircle,0.0,2.0*PI,resolution);
 	WriteCoordinatesToFile::writeCoordinatesToFile("chapter3points.txt",pointsOnCircle);
 
+	//Sum the area of the small triangles, to get an approximate area
+	//The for loop builds triangles with two corners on the circumference
+	//and the center of the circle as third point
 	double totalArea = 0.0;
 	for(Standard_Integer i=1;i<=resolution;i++)
 	{
@@ -34,9 +45,12 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
+			//If we are at the end of the array, take the first point
+			//because of periodicity
 			secondPntOfTriangle = pointsOnCircle.Value(1);
 		}
 		gp_Pnt thirdPntOfTriangle = centerPoint;
+		//A Handle (like a smart pointer) is built to an array of points
 		Handle_TColgp_HArray1OfPnt trianglePointsArray = new TColgp_HArray1OfPnt(1,3);
 		trianglePointsArray->ChangeValue(1) = firstPntOfTriangle;
 		trianglePointsArray->ChangeValue(2) = secondPntOfTriangle;

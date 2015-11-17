@@ -1,3 +1,5 @@
+#ifndef POINTONCURVEDISTRIBUTOR_HPP
+#define POINTONCURVEDISTRIBUTOR_HPP 
 //OpenCASCADE tutorials
 //Laszlo Kudela
 //November 2015
@@ -9,7 +11,7 @@
 namespace PointOnCurveDistribution
 {
 template<typename CurveType>
-void DistributePointsOnCurve(const CurveType& curve, TColgp_Array1OfPnt& pointArray, double lowerLimit, double upperLimit, Standard_Integer resolution)
+void distributePointsOnCurve(const CurveType& curve, TColgp_Array1OfPnt& pointArray, double lowerLimit, double upperLimit, Standard_Integer resolution)
 {
 	double deltaU = (upperLimit - lowerLimit) / (resolution - 1);
 	for(Standard_Integer i = 0;i<resolution;i++)
@@ -19,3 +21,4 @@ void DistributePointsOnCurve(const CurveType& curve, TColgp_Array1OfPnt& pointAr
 	}
 }
 }
+#endif
