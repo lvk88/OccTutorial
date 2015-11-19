@@ -23,6 +23,9 @@ TARGET_LINK_LIBRARIES(chapter1_3 chapter1 TKernel TKMath)
 ADD_EXECUTABLE(chapter1_4 chapter1_4.cpp)
 TARGET_LINK_LIBRARIES(chapter1_4 chapter1 TKernel TKMath)
 
+ADD_EXECUTABLE(chapter1_5 chapter1_5.cpp)
+TARGET_LINK_LIBRARIES(chapter1_5 chapter1 TKernel TKMath)
+
 ADD_CUSTOM_COMMAND(TARGET chapter1_2
 		   POST_BUILD
 		   COMMAND ${CMAKE_COMMAND} -E copy_directory
