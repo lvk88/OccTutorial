@@ -14,7 +14,18 @@ public:
 	LinePlaneIntersection();
 	virtual ~LinePlaneIntersection();
 
-	static gp_Pnt intersectLineWithPlane(const gp_Lin& line, const gp_Pln& plane);
+	struct LinePlaneIntersectionSolution
+	{
+		enum SolutionState{
+			OneSolution,
+			NoSolution,
+			InfiniteSolutions
+		};
+		gp_Pnt intersectionPoint;
+		SolutionState state;
+	};
+
+	static LinePlaneIntersectionSolution intersectLineWithPlane(const gp_Lin& line, const gp_Pln& plane);
 };
 
 #endif /* CHAPTER1_BASICS_INC_LINEPLANEINTERSECTION_HPP_ */
