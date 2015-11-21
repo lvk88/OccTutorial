@@ -8,18 +8,11 @@
 #include "gp_Trsf.hxx"
 
 #include<iostream>
-
-chapter1_1::chapter1_1()
+namespace chapter1_1
+{
+int execute(int argc, char** argv)
 {
 
-}
-chapter1_1::~chapter1_1()
-{
-
-}
-
-int chapter1_1::execute(int argc, char** argv)
-{
 	//Create two point classes, with (x,y,z) coordinates
 	gp_Pnt pnt1(0.0,0.0,0.0);
 	gp_Pnt pnt2(1.0,1.0,1.0);
@@ -42,4 +35,5 @@ int chapter1_1::execute(int argc, char** argv)
 	std::cout << "pnt3 after mirroring: " << pnt3.X() << " " << pnt3.Y() << " " << pnt3.Z()  << std::endl;
 	
 	return 0;
+}
 }
