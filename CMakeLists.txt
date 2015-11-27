@@ -2,6 +2,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(occtutorials)
 
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+INCLUDE(cmake/CreateExecutable.cmake)
+
 #Find opencascade libraries
 
 FIND_PACKAGE(OCE REQUIRED)

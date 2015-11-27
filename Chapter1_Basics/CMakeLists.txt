@@ -2,29 +2,19 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(Chapter1)
 
-ADD_EXECUTABLE(chapter1_1 chapter1_1.cpp)
-TARGET_LINK_LIBRARIES(chapter1_1 TKernel TKMath)
-
-ADD_EXECUTABLE(chapter1_2 chapter1_2.cpp)
-TARGET_LINK_LIBRARIES(chapter1_2 TKernel TKMath)
-
-ADD_EXECUTABLE(chapter1_2_exercise chapter1_2_exercise.cpp)
-TARGET_LINK_LIBRARIES(chapter1_2_exercise TKernel TKMath)
-
 FILE(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/inc/*.hpp")
 FILE(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 ADD_LIBRARY(chapter1 ${SOURCES} ${HEADERS})
 TARGET_LINK_LIBRARIES(chapter1 TKernel TKMath)
 
-ADD_EXECUTABLE(chapter1_3 chapter1_3.cpp)
-TARGET_LINK_LIBRARIES(chapter1_3 chapter1 TKernel TKMath)
+FILE(GLOB RUNNERSOURCES "${CMAKE_CURRENT_SOURCE_DIR}/runners/*.cpp")
 
-ADD_EXECUTABLE(chapter1_4 chapter1_4.cpp)
-TARGET_LINK_LIBRARIES(chapter1_4 chapter1 TKernel TKMath)
+FOREACH(RUNNERSOURCE ${RUNNERSOURCES})
 
-ADD_EXECUTABLE(chapter1_5 chapter1_5.cpp)
-TARGET_LINK_LIBRARIES(chapter1_5 chapter1 TKernel TKMath)
+	CreateExecutable(${RUNNERSOURCE} chapter1 TKernel TKMath)
+
+ENDFOREACH(RUNNERSOURCE)
 
 ADD_CUSTOM_COMMAND(TARGET chapter1_2
 		   POST_BUILD
