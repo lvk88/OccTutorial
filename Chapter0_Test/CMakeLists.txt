@@ -1,6 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-PROJECT(Chapter0)
+PROJECT(chapter0)
 
-ADD_EXECUTABLE(chapter0 main.cpp)
-TARGET_LINK_LIBRARIES(chapter0 TKernel TKMath TKPrim TKBO TKSTEP)
+CreateExecutable(chapter0.cpp TKernel TKMath TKPrim TKBO TKSTEP)
