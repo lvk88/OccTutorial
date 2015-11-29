@@ -1,6 +1,12 @@
 //OpenCASCADE tutorials
 //Laszlo Kudela
 //November 2015
+//This example shows the usage of OpenCASCADE standard containers.
+//We create a circle and segmentize it into a poylgon with 20 corners. The resulting
+//points are stored in OpenCASCADE's container for points, TColgp_Array1OfPnt.
+//Then, we compute the area of the polygon by summing up the area of the areas of each small triangle.
+//Note that while it is not possible to pass TColgp_Array1OfPnt objects by value, if we create
+//a handle to it, (which is equivalent to a "smart pointer") we can easily pass it around between functions.
 
 #include "Chapter1_Basics/inc/PointOnCurveDistributor.hpp"
 #include "Chapter1_Basics/inc/WriteCoordinatesToFile.hpp"

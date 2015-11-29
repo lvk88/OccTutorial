@@ -1,6 +1,10 @@
 //OpenCASCADE Tutorials
 //Laszlo Kudela
 //Nov 19, 2015
+//This example demonstrates how to use OpenCASCADE's built in
+//features for solving equations. To this end, the intersection point between a 
+//line and a plane is created. The algorithm deals with special cases, such as when the line lies
+//exactly on the plane, or the line and plane are parallel with no intersections.
 
 #include <gp_Ax3.hxx>
 #include <gp_Dir.hxx>
@@ -50,6 +54,7 @@ int main(int argc, char **argv) {
 			plane);
 	treatIntersectionSolution(intersectionPoint);
 
+	//Create a line which is parallel to the plane
 	gp_Lin line3(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(1.0, 0.0, -1.0));
 	intersectionPoint = LinePlaneIntersection::intersectLineWithPlane(line3,
 			plane);

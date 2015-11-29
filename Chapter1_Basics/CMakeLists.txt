@@ -16,4 +16,4 @@ ADD_CUSTOM_COMMAND(TARGET chapter1_2
 		   POST_BUILD
 		   COMMAND ${CMAKE_COMMAND} -E copy_directory
 		   "${CMAKE_CURRENT_SOURCE_DIR}/python"
-		   "${CMAKE_CURRENT_BINARY_DIR}")
+		   "${CMAKE_BINARY_DIR}/bin")

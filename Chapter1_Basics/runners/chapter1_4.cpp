@@ -1,6 +1,12 @@
-#include "Chapter1_Basics/inc/LeastSquaresFitting.hpp"
+//OpenCASCADE tutorial by Laszlo Kudela
+//November 2015
+//This example demonstrates the usage of OpenCASCADE's built in
+//optimization algorithms. In this example, we fit a circle onto a 
+//scattered set of points, using math_BFGS. Check out LeastSquaresFitting.hpp
+//for more details.
 #include "Chapter1_Basics/inc/PointOnCurveDistributor.hpp"
 #include "Chapter1_Basics/inc/WriteCoordinatesToFile.hpp"
+#include "Chapter1_Basics/inc/LeastSquaresFitting.hpp"
 #include "Utilities/inc/constants.hpp"
 
 #include "TColgp_HArray1OfPnt.hxx"

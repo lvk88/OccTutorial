@@ -1,6 +1,12 @@
 //OpenCASCADE tutorials by Laszlo Kudela
 //2015 November
 //Chapter 1.1 Basics
+//This is a first example that shows how to create basic classes
+//from OpenCASCADEs most basic library, TKMath. We will create
+//two points in the 3D space, pnt1 and pnt2. We display the coordinates of
+//the points and print out the distance between them.
+//After that, we apply a rotation transformation on pnt1 as well as a mirroring
+//on pnt1.
 #include "gp_Pnt.hxx"
 #include "gp_Ax1.hxx"
 #include "gp_Trsf.hxx"

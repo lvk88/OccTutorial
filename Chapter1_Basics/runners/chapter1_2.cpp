@@ -1,6 +1,12 @@
 //OpenCASCADE tutorials by Laszlo Kudela
 //2015 November
 //Chapter 1.2 Basics
+//This example creates a circles, evaluates a set of points
+//on the circumference of the circle, and writes the points out in a file.
+//There is a python script provided in the bin folder to display the resulting points.
+//You can run it by typing in the bin folder:
+//python plotPoints.py chapter1_2_circlePoints.txt
+//It creates a point.png file that displays the points you have created in this example.
 
 #include <iostream>
 #include <fstream>
