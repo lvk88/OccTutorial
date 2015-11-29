@@ -13,4 +13,8 @@ functioning Ubuntu operating system. Make sure you also install the guest additi
 Install OpenCASCADE using your the package manager of your Linux distribution. For example, on Ubuntu:
 <pre>
 sudo apt-get install liboce-*
-</pre>
+<\pre>
+To be able to visualize the geometric models in the earlier chapters, it is also recommended to install FreeCAD:
+<pre>
+sudo apt-get install freecad
+<\pre>
