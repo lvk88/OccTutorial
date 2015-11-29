@@ -56,7 +56,7 @@ cd ~/occtutorial/build/bin
 ./chapter0
 </pre>
 This will create a simple box with a cylindrical hole, and print out some of its physical properties. The source of this can be found in
-source/OccTutorial/chapter0/chapter0.cpp. It also creates an output file of the geometry in STEP format. You can open and examine it
+source/OccTutorial/Chapter0_Test/chapter0.cpp. It also creates an output file of the geometry in STEP format. You can open and examine it
 using FreeCad for example. The file is located in build/bin/boxWitHole.stp
 
 ##How are the tutorials organized
