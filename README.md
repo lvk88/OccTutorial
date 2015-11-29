@@ -40,7 +40,7 @@ mkdir ~/occtutorial/build
 </pre>
 Next, we run CMAKE to generate us the Makefiles:
 <pre>
-cd ~occtutorial/build/
+cd ~/occtutorial/build/
 cmake ~/occtutorial/sources/OccTutorial
 </pre>
 If everything went without error, we can build the tutorials:
