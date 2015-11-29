@@ -31,7 +31,7 @@ Then, clone the repository from GIT:
 cd ~/occtutorial/sources
 git clone https://github.com/lvk88/OccTutorial.git
 </pre>
-This will create @~/occtutorial/sources/OccTutorial@.
+This will create ~/occtutorial/sources/OccTutorial.
 
 ##Build the tutorial
 The build system is based on CMAKE, and we are aiming for an out-of-source build. Therefore, we make a build folder:
@@ -50,7 +50,14 @@ make
 </pre>
 This will build the tutorials into build/bin directory. Each executable represents a small example of OpenCASCADE functionality.
 ##Run the first demonstrative example
-Now that the tutorials
+Now that the tutorials are built, you can run the first demonstrative example.
+<pre>
+cd ~/occtutorial/build/bin
+./chapter0
+</pre>
+This will create a simple box with a cylindrical hole, and print out some of its physical properties. The source of this can be found in
+source/OccTutorial/chapter0/chapter0.cpp. It also creates an output file of the geometry in STEP format. You can open and examine it
+using FreeCad for example. The file is located in build/bin/boxWitHole.stp
 
 ##How are the tutorials organized
 The series is organized into Chapters, with each chapter focusing on one or two packages of OpenCASCADE. With the exception of Chapter0, every chapter
@@ -58,4 +65,6 @@ consists of an "inc", "src", and "runners" folder. Obviously, inc contains the h
 folder, which contains a set of driver files, each having its own main function. When building OccTutorials, the executable output will be compiled into 
 @build/bin@
 
-
+## Where to go now?
+The tutorials are strongly under construction right now, but a detailed explanation of each source will be available at the wiki soon. Until then, the comments in the
+files explain more or less what each example is doing.
