@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Occtutorial by lvk88</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Occtutorial</h1>
+        <p>Tutorials for OpenCASCADE, the open source CAD kernel</p>
+
+        <p class="view"><a href="https://github.com/lvk88/OccTutorial">View the Project on GitHub <small>lvk88/OccTutorial</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/lvk88/OccTutorial/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/lvk88/OccTutorial/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/lvk88/OccTutorial">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="occtutorial" class="anchor" href="#occtutorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>OccTutorial</h1>
+
+<p>This repository contains a set of tutorials for OpenCASCADE, the open source geometry kernel.
+You can read more about OpenCASCADE at <a href="http://www.opencascade.org">http://www.opencascade.org</a></p>
+
+<h2>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h2>
+
+<p>The tutorials are being written and tested in Ubuntu 15.10. For the quickest start, it is therefore recommended to follow the tutorials using Ubuntu. </p>
+
+<h3>
+<a id="what-if-i-am-using-windows" class="anchor" href="#what-if-i-am-using-windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>What if I am using Windows?</h3>
+
+<p>The easiest way is to install Ubuntu as a VirtualBox guest on your Windows machine, which will give you access to a fully
+functioning Ubuntu operating system. Make sure you also install the guest additions, to have 3D acceleration enabled.</p>
+
+<h2>
+<a id="install-opencascade" class="anchor" href="#install-opencascade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install OpenCASCADE</h2>
+
+<p>Install OpenCASCADE using your the package manager of your Linux distribution. For example, on Ubuntu:</p>
+
+<pre>
+sudo apt-get install liboce-*
+</pre>
+
+<p>To be able to visualize the geometric models in the earlier chapters, it is also recommended to install FreeCAD:</p>
+
+<pre>
+sudo apt-get install freecad
+</pre>
+
+<h2>
+<a id="download-the-tutorial-sources" class="anchor" href="#download-the-tutorial-sources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download the tutorial sources</h2>
+
+<p>Make a folder for the tutorial sources, e.g. in your home folder</p>
+
+<pre>
+cd ~
+mkdir occtutorial
+mkdir occtutorial/sources
+</pre>
+
+<p>Then, clone the repository from GIT:</p>
+
+<pre>
+cd ~/occtutorial/sources
+git clone https://github.com/lvk88/OccTutorial.git
+</pre>
+
+<p>This will create ~/occtutorial/sources/OccTutorial.</p>
+
+<h2>
+<a id="build-the-tutorial" class="anchor" href="#build-the-tutorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build the tutorial</h2>
+
+<p>The build system is based on CMAKE, and we are aiming for an out-of-source build. Therefore, we make a build folder:</p>
+
+<pre>
+mkdir ~/occtutorial/build
+</pre>
+
+<p>Next, we run CMAKE to generate us the Makefiles:</p>
+
+<pre>
+cd ~/occtutorial/build/
+cmake ~/occtutorial/sources/OccTutorial
+</pre>
+
+<p>If everything went without error, we can build the tutorials:</p>
+
+<pre>
+cd ~/occtutorial/build
+make
+</pre>
+
+<p>This will build the tutorials into build/bin directory. Each executable represents a small example of OpenCASCADE functionality.</p>
+
+<h2>
+<a id="run-the-first-demonstrative-example" class="anchor" href="#run-the-first-demonstrative-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run the first demonstrative example</h2>
+
+<p>Now that the tutorials are built, you can run the first demonstrative example.</p>
+
+<pre>
+cd ~/occtutorial/build/bin
+./chapter0
+</pre>
+
+<p>This will create a simple box with a cylindrical hole, and print out some of its physical properties. The source of this can be found in
+source/OccTutorial/Chapter0_Test/chapter0.cpp. It also creates an output file of the geometry in STEP format. You can open and examine it
+using FreeCad for example. The file is located in build/bin/boxWitHole.stp</p>
+
+<h2>
+<a id="how-are-the-tutorials-organized" class="anchor" href="#how-are-the-tutorials-organized" aria-hidden="true"><span class="octicon octicon-link"></span></a>How are the tutorials organized</h2>
+
+<p>The series is organized into Chapters, with each chapter focusing on one or two packages of OpenCASCADE. With the exception of Chapter0, every chapter
+consists of an "inc", "src", and "runners" folder. Obviously, inc contains the headers for the given chapter, src the source files. Runners is a special
+folder, which contains a set of driver files, each having its own main function. When building OccTutorials, the executable output will be compiled into 
+@build/bin@</p>
+
+<h2>
+<a id="where-to-go-now" class="anchor" href="#where-to-go-now" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where to go now?</h2>
+
+<p>The tutorials are strongly under construction right now, but a detailed explanation of each source will be available at the wiki soon. Until then, the comments in the
+files explain more or less what each example is doing.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/lvk88">lvk88</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
