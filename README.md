@@ -2,6 +2,10 @@
 This repository contains a set of tutorials for OpenCASCADE, the open source geometry kernel.
 You can read more about OpenCASCADE at http://www.opencascade.org
 
+## Where to start.
+If you are familiar with using CMAKE, GIT, and generally with building and compiling, proceed to the "Quick start" section. If you need a detailed explanation
+on how to check out the code, set up an IDE and build the first example, please go to [the setup section](https://github.com/lvk88/OccTutorial/wiki/Setup) in the Wiki.
+
 ## Quick start
 The tutorials are being written and tested in Ubuntu 15.10. For the quickest start, it is therefore recommended to follow the tutorials using Ubuntu. 
 
