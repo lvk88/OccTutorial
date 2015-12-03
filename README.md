@@ -1,6 +1,8 @@
 # OccTutorial
 This repository contains a set of tutorials for OpenCASCADE, the open source geometry kernel.
-You can read more about OpenCASCADE at http://www.opencascade.org.
+You can read more about OpenCASCADE at http://www.opencascade.org. This series consists of chapters,
+each chapter demonstrating a small set of features offered by OpenCASCADE. Make sure you also follow
+the [blog](http://occtutorials.wordpress.com) where the discussions of each example is published.
 
 ## Where to start.
 If you are familiar with using CMAKE, GIT, and generally with building and compiling, proceed to the "Quick start" section. If you need a detailed explanation
