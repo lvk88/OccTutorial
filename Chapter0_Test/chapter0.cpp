@@ -3,8 +3,8 @@
 #include "BRepPrimAPI_MakeCylinder.hxx"
 #include "BRepPrimAPI_MakeBox.hxx"
 #include "BRepAlgoAPI_Cut.hxx"
-#include "STEPControl_Writer.hxx"
 #include "BRepGProp.hxx"
+#include "STEPControl_Writer.hxx"
 #include "GProp_GProps.hxx"
 
 
