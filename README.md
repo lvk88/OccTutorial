@@ -71,5 +71,5 @@ folder, which contains a set of driver files, each having its own main function.
 @build/bin@
 
 ## Where to go now?
-The tutorials are strongly under construction right now, but a detailed explanation of each source will be available at the wiki soon. Until then, the comments in the
-files explain more or less what each example is doing.
+The tutorials are strongly under construction right now, but a detailed explanation of each source will be available at the [blog](https://occtutorials.wordpress.com)
+soon. Until then, the comments in the files explain more or less what each example is doing.
