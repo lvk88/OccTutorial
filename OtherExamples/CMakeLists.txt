@@ -1,0 +1,19 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT(otherexamples)
+
+CreateLibrary()
+
+FILE(GLOB RUNNERSOURCES "${CMAKE_CURRENT_SOURCE_DIR}/runners/*.cpp")
+
+FOREACH(RUNNERSOURCE ${RUNNERSOURCES})
+
+	CreateExecutable(${RUNNERSOURCE} otherexamples chapter1 TKernel TKMath TKSTL)
+
+ENDFOREACH(RUNNERSOURCE)
+
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/testrunners")
+FILE(GLOB TESTSOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp")
+ADD_EXECUTABLE(otherexamples_test ${TESTSOURCES})
+TARGET_LINK_LIBRARIES(otherexamples_test otherexamples TKernel TKMath TKPrim)
+ADD_TEST(otherexamples_test "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/otherexamples_test")
