@@ -2,6 +2,8 @@
 //OpenCASCADE Tutorials by Laszlo Kudela
 //December 2015
 
+#include "Utilities/inc/MathFunctions.hpp"
+
 #include "Chapter1_Basics/inc/CylinderToBspline.hpp"
 #include "Chapter1_Basics/inc/BSplineSurfaceContainer.hpp"
 #include "Chapter1_Basics/inc/BSplineBasisComputations.hpp"
@@ -12,6 +14,8 @@
 #include "TColStd_HArray1OfReal.hxx"
 
 #include <iostream>
+#include <fstream>
+
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +29,7 @@ int main(int argc, char *argv[])
 	//BSplCLib::Reparametrize(0.0,1.0,flatKnots->ChangeArray1());
 	//
 	//
-	
+
 	Handle_TColStd_HArray1OfReal flatKnots = new TColStd_HArray1OfReal(1,9);
 	flatKnots->SetValue(1,-3.0);
 	flatKnots->SetValue(2,-2.0);
@@ -37,21 +41,28 @@ int main(int argc, char *argv[])
 	flatKnots->SetValue(8,4.0);
 	flatKnots->SetValue(9,5.0);
 
-	for(Standard_Integer i=1;i<=9;i++)
-	{
-		std::cout << flatKnots->Value(i) << std::endl;
-	}
 
-	double deltaU = (5.0 + 3.0) / 20.0;
+	std::vector<double> samplePoints = MathFunctions::linspace(-1.0,3.0,100);
 
-	for(size_t i=0;i<=20;i++)
+	std::ofstream file;
+	file.open("basisFunctions.txt");
+	for(size_t basisFunctionNumber=0;basisFunctionNumber<6;basisFunctionNumber++)
 	{
-		double u = -3.0 + i*deltaU;
-		Standard_Integer knotIndex;
-		Standard_Real newParameter;
-		BSplCLib::LocateParameter(2,flatKnots->Array1(),u,true,flatKnots->Value(3),flatKnots->Value(7),knotIndex,newParameter);
-		double bSplineValue = BSplineBasisComputations::evaluateBasisFunction(flatKnots,2,newParameter,3);
-		std::cout << u << " " << newParameter << " " <<  knotIndex << " "  <<  bSplineValue << std::endl;
+		file << basisFunctionNumber << std::endl;
+		for(size_t i=0;i<samplePoints.size();i++)
+		{
+			Standard_Integer knotIndex;
+			Standard_Real newParameter;
+			BSplCLib::LocateParameter(2,flatKnots->Array1(),samplePoints[i],true,flatKnots->Value(3),flatKnots->Value(7),knotIndex,newParameter);
+			double bSplineValue = BSplineBasisComputations::evaluateBasisFunction(flatKnots,2,newParameter,basisFunctionNumber);
+			file << bSplineValue << "\t";
+		}
+		file << std::endl;
+		for(size_t i=0;i<samplePoints.size();i++)
+		{
+			file << samplePoints[i] << "\t";
+		}
+		file << std::endl;
 	}
 
 

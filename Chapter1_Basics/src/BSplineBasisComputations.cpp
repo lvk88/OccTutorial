@@ -23,7 +23,10 @@ void BSplineBasisComputations::calculateBasisFunctions(Handle_TColStd_HArray1OfR
 	
 	math_Matrix condensedBasisFunctions(1,1,1,numberOfNonVanishingFunctions);
 	
-	BSplCLib::EvalBsplineBasis(1,0,degree+1,knots->Array1(),parameter,firstNonZeroBSplineIndex,condensedBasisFunctions);
+	BSplCLib::EvalBsplineBasis(-1,0,degree+1,knots->Array1(),parameter,firstNonZeroBSplineIndex,condensedBasisFunctions);
+
+//	std::cout << "Parameter " << parameter <<  " first non-zero basis " << firstNonZeroBSplineIndex << std::endl;
+//	std::cout << "Condensed functions: " << condensedBasisFunctions <<   std::endl;
 
 	for(Standard_Integer i = 0;i<numberOfNonVanishingFunctions;i++)
 	{
@@ -37,6 +40,7 @@ double BSplineBasisComputations::evaluateBasisFunction(Handle_TColStd_HArray1OfR
 {
 	Standard_Integer totalNumberOfBasisFunctions = knots->Length() - 1 - degree;
 	math_Matrix basisFunctions(1,1,1,totalNumberOfBasisFunctions);
+	basisFunctions.Init(0.0);
 
 	BSplineBasisComputations::calculateBasisFunctions(knots,degree,parameter,basisFunctions);
 
