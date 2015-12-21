@@ -17,7 +17,9 @@ public:
 	virtual ~BSplineBasisComputations ();
 
 	static void calculateBasisFunctions(Handle_TColStd_HArray1OfReal knots, Standard_Integer degree, Standard_Real parameter, math_Matrix& basisFunctions);
+	static void calculatePeriodicBasisFunctions(Handle_TColStd_HArray1OfReal knots, Standard_Integer degree, Standard_Real parameter, math_Matrix& basisFunctions);
 	static double evaluateBasisFunction(Handle_TColStd_HArray1OfReal knots, Standard_Integer degree, Standard_Real parameter, Standard_Integer basisFunctionIndex);
+	static double evaluatePeriodicBSplineBasisFunction(Handle_TColStd_HArray1OfReal knots, Standard_Integer degree, Standard_Real parameter, Standard_Integer basisFunctionIndex);
 
 private:
 	

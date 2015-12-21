@@ -26,35 +26,39 @@ int main(int argc, char *argv[])
 	//
 	//Handle_TColStd_HArray1OfReal flatKnots = new TColStd_HArray1OfReal(1,flatKnotSequenceLength);
 	//BSplCLib::KnotSequence(container->myUKnots->Array1(),container->myUMultiplicities->Array1(),2,true,flatKnots->ChangeArray1());	
-	//BSplCLib::Reparametrize(0.0,1.0,flatKnots->ChangeArray1());
-	//
-	//
+	////BSplCLib::Reparametrize(0.0,1.0,flatKnots->ChangeArray1());
+	//std::vector<double> samplePoints = MathFunctions::linspace(0.0,1.0,100);
 
-	Handle_TColStd_HArray1OfReal flatKnots = new TColStd_HArray1OfReal(1,9);
-	flatKnots->SetValue(1,-3.0);
-	flatKnots->SetValue(2,-2.0);
-	flatKnots->SetValue(3,-1.0);
-	flatKnots->SetValue(4,0.0);
-	flatKnots->SetValue(5,1.0);
-	flatKnots->SetValue(6,2.0);
-	flatKnots->SetValue(7,3.0);
-	flatKnots->SetValue(8,4.0);
-	flatKnots->SetValue(9,5.0);
+	Handle_TColStd_HArray1OfReal flatKnots = new TColStd_HArray1OfReal(1,10);
+	flatKnots->SetValue(2,0.0);
+	flatKnots->SetValue(3,0.0);
+	flatKnots->SetValue(4,1./3.);
+	flatKnots->SetValue(5,1./3.);
+	flatKnots->SetValue(6,2./3.);
+	flatKnots->SetValue(7,2./3.);
+	flatKnots->SetValue(8,1.0);
+	flatKnots->SetValue(9,1.0);
 
+	TColStd_Array1OfInteger mults(1,6);
+	mults.SetValue(1,1);
+	mults.SetValue(2,2);
+	mults.SetValue(3,2);
+	mults.SetValue(4,2);
+	mults.SetValue(5,2);
+	mults.SetValue(6,1);
 
-	std::vector<double> samplePoints = MathFunctions::linspace(-1.0,3.0,100);
+	std::vector<double> samplePoints = MathFunctions::linspace(0.0,1.0,100);
 
 	std::ofstream file;
 	file.open("basisFunctions.txt");
-	for(size_t basisFunctionNumber=0;basisFunctionNumber<6;basisFunctionNumber++)
+	for(size_t basisFunctionNumber=0;basisFunctionNumber<7;basisFunctionNumber++)
 	{
 		file << basisFunctionNumber << std::endl;
 		for(size_t i=0;i<samplePoints.size();i++)
 		{
 			Standard_Integer knotIndex;
 			Standard_Real newParameter;
-			BSplCLib::LocateParameter(2,flatKnots->Array1(),samplePoints[i],true,flatKnots->Value(3),flatKnots->Value(7),knotIndex,newParameter);
-			double bSplineValue = BSplineBasisComputations::evaluateBasisFunction(flatKnots,2,newParameter,basisFunctionNumber);
+			double bSplineValue = BSplineBasisComputations::evaluateBasisFunction(flatKnots,2,samplePoints[i],basisFunctionNumber);
 			file << bSplineValue << "\t";
 		}
 		file << std::endl;
@@ -64,6 +68,5 @@ int main(int argc, char *argv[])
 		}
 		file << std::endl;
 	}
-
-
+	std::cout << BSplCLib::NbPoles(2,true,mults) << std::endl;
 }
