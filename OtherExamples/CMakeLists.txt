@@ -8,7 +8,7 @@ FILE(GLOB RUNNERSOURCES "${CMAKE_CURRENT_SOURCE_DIR}/runners/*.cpp")
 
 FOREACH(RUNNERSOURCE ${RUNNERSOURCES})
 
-	CreateExecutable(${RUNNERSOURCE} otherexamples chapter1 TKernel TKMath TKSTL)
+	CreateExecutable(${RUNNERSOURCE} otherexamples chapter1 TKernel TKMath TKSTL TKBO TKPrim TKSTEP  )
 
 ENDFOREACH(RUNNERSOURCE)
 
