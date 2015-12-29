@@ -23,7 +23,9 @@
 int main(int argc, char *argv[])
 {
 	//Create a curved plate with hole
+	std::cout << "Creating plate with hole... ";
 	TopoDS_Shape plateWithHoleShape = CreateCurvedPlateWithHole::createCurvedPlateWithHole();
+	std::cout << "done" << std::endl;
 
 	//Make a triangulation out of it, write to STL
 	TopoDS_Face plateWithHoleFace;
@@ -32,13 +34,16 @@ int main(int argc, char *argv[])
 	{
 		plateWithHoleFace = TopoDS::Face(explorer.Current());
 	}
-
+	std::cout << "Writing STL... " << std::flush;
 	StlAPI::Write(plateWithHoleFace,"curvedPlateWithHole.stl",true);
+	std::cout << "done" << std::endl;
 
 
 	//Read STL, extract boundary edges of STL mesh
+	std::cout << "Reading STL..." << std::flush;
 	TopoDS_Shape stlShape;
 	StlAPI::Read(stlShape,"curvedPlateWithHole.stl");
+	std::cout << "done" << std::endl;
 
 	//For every edge in the triangulation, we pick those that have only one parent face
 	//We will store the resulting edges in boundaryEdges
@@ -47,7 +52,9 @@ int main(int argc, char *argv[])
 
 	TopTools_IndexedDataMapOfShapeListOfShape mapOfEdges;
 	TopExp::MapShapesAndAncestors(stlShape,TopAbs_EDGE,TopAbs_FACE,mapOfEdges);
+	std::cout << mapOfEdges.Extent() << " edges found in STL file"  << std::endl;
 	
+	std::cout << "Extracting manifold edges " << std::endl;
 	for(explorer.Init(stlShape,TopAbs_EDGE,TopAbs_SHAPE);explorer.More();explorer.Next())
 	{
 		TopoDS_Edge currentEdge = TopoDS::Edge(explorer.Current());		
