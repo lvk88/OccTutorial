@@ -13,6 +13,7 @@ public:
 	virtual ~StlPointsExtractor ();
 
 	static Handle_TColgp_HArray1OfPnt extractVerticesFromTopoDSShape(const TopoDS_Shape& shape);
+	static TopoDS_Shape extractManifoldBoundaries(const TopoDS_Shape& shape);
 
 private:
 	/* data */
