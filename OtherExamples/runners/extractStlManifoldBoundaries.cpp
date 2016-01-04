@@ -16,6 +16,7 @@
 #include "TopTools_IndexedDataMapOfShapeListOfShape.hxx"
 
 #include "BRep_Tool.hxx"
+#include "BRepMesh_IncrementalMesh.hxx"
 
 #include "StlAPI.hxx"
 
@@ -28,13 +29,17 @@ int main(int argc, char *argv[])
 	TopoDS_Shape plateWithHoleShape = CreateCurvedPlateWithHole::createCurvedPlateWithHole();
 	std::cout << "done" << std::endl;
 
-	//Make a triangulation out of it, write to STL
 	TopoDS_Face plateWithHoleFace;
 	TopExp_Explorer explorer;
+	//Make a triangulation out of it, write to STL
 	for(explorer.Init(plateWithHoleShape,TopAbs_FACE,TopAbs_SHAPE);explorer.More();explorer.Next())
 	{
 		plateWithHoleFace = TopoDS::Face(explorer.Current());
 	}
+	std::cout << "Creating mesh..."  << std::flush;
+	BRepMesh_IncrementalMesh meshMaker(plateWithHoleFace,0.01,Standard_False);
+	std::cout << " done." << std::endl;
+	meshMaker.Perform();
 	std::cout << "Writing STL... " << std::flush;
 	StlAPI::Write(plateWithHoleFace,"curvedPlateWithHole.stl",true);
 	std::cout << "done" << std::endl;
