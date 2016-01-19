@@ -26,3 +26,12 @@ Standard_Boolean TangentMagnitude::Value(Standard_Real X, Standard_Real& F)
 
 	return Standard_True;
 }
+const Handle_Geom_Curve TangentMagnitude::getCurve() const
+{
+	return myCurve;
+}
+void TangentMagnitude::setCurve(Handle_Geom_Curve curve)
+{
+	myCurve = curve;
+	return;
+}

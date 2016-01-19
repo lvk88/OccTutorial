@@ -42,6 +42,9 @@ int main(void)
 	Handle_Geom_Curve rotatedCurve = Handle_Geom_Curve::DownCast(rotated);
 	GeometryWriter::writeGeomEntityToStepFile(rotatedCurve,"rotatedBezier.stp");
 
+	//We can also scale the curve, applying a scaling
+	Handle_Geom_Curve scaledCurve = Handle_Geom_Curve::DownCast(bezierCurve->Scaled(gp::Origin(),2.0));
+
 	//What are the parametric bounds of the created curve?
 	Standard_Real firstParameter = bezierCurve->FirstParameter();
 	Standard_Real lastParameter = bezierCurve->LastParameter();
@@ -81,5 +84,19 @@ int main(void)
 		std::cout << "The length of the curve is approximately " << integrator.Value() << std::endl;
 	}
 
+	//Let's compute the length of the rotated and scaled curve
+	functionToBeIntegrated.setCurve(rotatedCurve);
+	math_GaussSingleIntegration rotatedIntegrator(functionToBeIntegrated,firstParameter,lastParameter,5);
+	double rotatedLength = rotatedIntegrator.Value();
+	functionToBeIntegrated.setCurve(scaledCurve);
+	math_GaussSingleIntegration scaledIntegrator(functionToBeIntegrated,firstParameter,lastParameter,5);
+	double scaledLength = scaledIntegrator.Value();
+
+	std::cout << "Length of rotated curve is " << rotatedLength  << std::endl;
+	std::cout << "Length of scaled curve is " << scaledLength  << std::endl;
+
+	//If you run this example, you will see that rotation keeps the length of the curve, because
+	//it is a rigid transformation, while scaling changes the length.
+	
 	return 0;
 }

@@ -11,6 +11,10 @@ public:
 	virtual ~TangentMagnitude ();
 	Standard_Boolean Value(Standard_Real X, Standard_Real& F);
 
+	const Handle_Geom_Curve getCurve() const;
+	void setCurve(Handle_Geom_Curve curve);
+	
+
 private:
 	Handle_Geom_Curve myCurve;
 };
