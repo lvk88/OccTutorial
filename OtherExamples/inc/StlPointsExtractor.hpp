@@ -1,7 +1,7 @@
-//OpenCASCADE tutorials by Laszlo Kudela
-//December 2015
 #ifndef _STLPOINTEXTRACTOR_HPP_
 #define _STLPOINTEXTRACTOR_HPP_
+//OpenCASCADE tutorials by Laszlo Kudela
+//December 2015
 
 #include "Handle_TColgp_HArray1OfPnt.hxx"
 #include "TopoDS_Shape.hxx"
