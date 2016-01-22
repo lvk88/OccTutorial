@@ -1,3 +1,5 @@
+#ifndef _TANGENTMAGNITUDE_HPP_
+#define _TANGENTMAGNITUDE_HPP_ 
 //OpenCASCADE tutorial by Laszlo Kudela
 //January 2016
 
@@ -18,3 +20,4 @@ public:
 private:
 	Handle_Geom_Curve myCurve;
 };
+#endif

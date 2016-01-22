@@ -1,3 +1,5 @@
+#ifndef _CREATECURVEDPLATEWITHHOLE_HPP_
+#define _CREATECURVEDPLATEWITHHOLE_HPP_ 
 //OpenCASCADE tutorial by Laszlo Kudela
 //December 2015
 
@@ -9,3 +11,4 @@ namespace CreateCurvedPlateWithHole
 	TopoDS_Shape createCurvedPlateWithHole();
 
 }
+#endif

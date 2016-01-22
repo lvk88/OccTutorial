@@ -1,3 +1,5 @@
+#ifndef _GEOMETRYWRITER_HPP_
+#define _GEOMETRYWRITER_HPP_
 //OpenCASCADE tutorial by Laszlo Kudela
 //January 2016
 
@@ -16,3 +18,4 @@ public:
 
 private:
 };
+#endif
