@@ -46,11 +46,9 @@ Standard_Boolean CircleFitCostFunction::Value(const math_Vector& X, Standard_Rea
 	double sum = 0.0;
 	for(Standard_Integer i = myPointsToFitOnto->Lower();i<=myPointsToFitOnto->Upper();i++)
 	{
-		double cxMinusPx = X(1)-myPointsToFitOnto->Value(i).X();
-		double cyMinusPy = X(2)-myPointsToFitOnto->Value(i).Y();
-		double distance = std::sqrt((cxMinusPx)*(cxMinusPx)+(cyMinusPy)*(cyMinusPy))-X(3);
-		double distanceSquared = distance*distance;
-		sum += distanceSquared;
+		double pxMinusCx = myPointsToFitOnto->Value(i).X()-X(1);
+		double pyMinusCy = myPointsToFitOnto->Value(i).Y()-X(2);
+                sum += (pxMinusCx*pxMinusCx+pyMinusCy*pyMinusCy-X(3)*X(3))*(pxMinusCx*pxMinusCx+pyMinusCy*pyMinusCy-X(3)*X(3));
 	}
  	
 	F = sum;
@@ -65,18 +63,17 @@ Standard_Boolean CircleFitCostFunction::Gradient(const math_Vector& X, math_Vect
 	
 	for(Standard_Integer i = myPointsToFitOnto->Lower();i<=myPointsToFitOnto->Upper();i++)
 	{
-		double cxMinusPx = X(1)-myPointsToFitOnto->Value(i).X();
-		double cyMinusPy = X(2)-myPointsToFitOnto->Value(i).Y();
-		double denominator = std::sqrt((cxMinusPx)*(cxMinusPx)+(cyMinusPy)*(cyMinusPy));
-		double distance = std::sqrt((cxMinusPx)*(cxMinusPx)+(cyMinusPy)*(cyMinusPy))-X(3);
-		g0 += 2.0*cxMinusPx*distance/denominator;
-		g1 += 2.0*cyMinusPy*distance/denominator;
-		g2 += -2.0 * distance;
+		double pxMinusCx = myPointsToFitOnto->Value(i).X()-X(1);
+		double pyMinusCy = myPointsToFitOnto->Value(i).Y()-X(2);
+                double distance = pxMinusCx*pxMinusCx+pyMinusCy*pyMinusCy-X(3)*X(3);
+                g0 += pxMinusCx*distance;
+                g1 += pyMinusCy*distance;
+                g2 += distance;
 	}
 
-	G(1) = g0;
-	G(2) = g1;
-	G(3) = g2;
+	G(1) = -4.0*g0;
+	G(2) = -4.0*g1;
+	G(3) = -4.0*X(3)*g2;
 
 	return Standard_True;
 

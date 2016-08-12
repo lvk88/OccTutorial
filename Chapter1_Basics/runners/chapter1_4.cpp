@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 	Handle_TColgp_HArray1OfPnt pointsForLeastSquaresFit = new TColgp_HArray1OfPnt(1,resolution);
 	for (Standard_Integer i = 1; i <= pointsForLeastSquaresFit->Upper(); ++i) 
 	{
-		double randomXShift = static_cast<double>(rand())/(static_cast<double>(RAND_MAX/0.5));
-		double randomYShift = static_cast<double>(rand())/(static_cast<double>(RAND_MAX/0.5));
+		double randomXShift = static_cast<double>(rand())/(static_cast<double>(RAND_MAX/0.5))-0.25;
+		double randomYShift = static_cast<double>(rand())/(static_cast<double>(RAND_MAX/0.5))-0.25;
 		pointsForLeastSquaresFit->ChangeValue(i) = pointsOnCircle.Value(i);		
 		pointsForLeastSquaresFit->ChangeValue(i).SetX(pointsForLeastSquaresFit->ChangeValue(i).X()+randomXShift);		
 		pointsForLeastSquaresFit->ChangeValue(i).SetY(pointsForLeastSquaresFit->ChangeValue(i).Y()+randomYShift);		
